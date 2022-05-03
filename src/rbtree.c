@@ -278,7 +278,7 @@ int rbtree_erase(rbtree *t, node_t *p) {
     x = y->right;
   }
 
-  // 삭제후 연결작업
+  // 삭제전 연결작업
   x->parent = y->parent;
   if (y->parent == t->nil) {
     t->root = x;
@@ -317,15 +317,16 @@ int rbtree_to_array(const rbtree *t, key_t *arr, const size_t n) {
   return 0;
 }
 
-void inorder(node_t* root, rbtree *t) {
-  if (root == t->nil) {
-    return;
-  }
-  inorder(root->left, t);
-  printf("%d (%d) ", root->key, root->color);
-  inorder(root->right, t);
-}
 
+// 테스트 환경
+// void inorder(node_t* root, rbtree *t) {
+//   if (root == t->nil) {
+//     return;
+//   }
+//   inorder(root->left, t);
+//   printf("%d (%d) ", root->key, root->color);
+//   inorder(root->right, t);
+// }
 // void main() {
 //   rbtree *r1 = (rbtree*)calloc(1, sizeof(rbtree));
 //   node_t *temp = (node_t*)calloc(1, sizeof(node_t));
